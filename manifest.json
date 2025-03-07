@@ -1,0 +1,26 @@
+{
+  "name": "Anime Wallpaper New Tab",
+  "description": "Replace your new tab with a Anime Wallpaper",
+  "version": "1.0",
+  "manifest_version": 3,
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "host_permissions": [
+    "https://app.zichen.zone/api/*"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "images/icon-16.jpg",
+      "32": "images/icon-32.jpg",
+      "48": "images/icon-48.jpg",
+      "128": "images/icon-128.jpg"
+    }
+  },
+  "icons": {
+    "16": "images/icon-16.jpg",
+    "32": "images/icon-32.jpg",
+    "48": "images/icon-48.jpg",
+    "128": "images/icon-128.jpg"
+  }
+}
