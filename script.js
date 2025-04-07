@@ -1,25 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 获取并设置壁纸
-  async function fetchAnimeWallpaper() {
+  function setAnimeWallpaper() {
     try {
-      // 使用dmoe.cc API获取动漫壁纸
-      const response = await fetch('https://app.zichen.zone/api/acg/api.php?return=json');
-      const data = await response.json();
-      const url = data && data.imgurl;
-      if (url) {
-        // 预加载图片
-        const img = new Image();
-        img.onload = () => {
-          document.body.style.backgroundImage = `url('${url}')`;
-        };
-        img.src = url;
+      // Create img element for wallpaper
+      const wallpaperImg = document.createElement('img');
+      
+      // Set the src directly to the API endpoint
+      wallpaperImg.src = 'https://app.zichen.zone/api/acg/api.php';
+      
+      // Style the image to work as wallpaper
+      wallpaperImg.style.position = 'fixed';
+      wallpaperImg.style.top = '0';
+      wallpaperImg.style.left = '0';
+      wallpaperImg.style.width = '100%';
+      wallpaperImg.style.height = '100%';
+      wallpaperImg.style.objectFit = 'cover';
+      wallpaperImg.style.zIndex = '-1'; // Behind other content
+      
+      // Remove any existing wallpaper
+      const existingWallpaper = document.querySelector('.anime-wallpaper');
+      if (existingWallpaper) {
+        existingWallpaper.remove();
       }
+      
+      // Add a class for easier identification
+      wallpaperImg.classList.add('anime-wallpaper');
+      
+      // Add to document
+      document.body.appendChild(wallpaperImg);
     } catch (error) {
-      console.error('Error fetching wallpaper:', error);
-      // 如果获取失败，可以使用默认背景
+      console.error('Error setting wallpaper:', error);
+      // If setting fails, can use default background
     }
   }
   
-  // 每次加载页面时获取新壁纸
-  fetchAnimeWallpaper();
+  // Set wallpaper when page loads
+  setAnimeWallpaper();
 });
